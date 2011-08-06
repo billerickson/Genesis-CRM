@@ -81,7 +81,14 @@ function child_theme_setup() {
 
 	// Remove post meta fields
 	add_action( 'admin_menu' , 'crm_remove_page_fields' );
-
+	
+	// Remove Genesis SEO Metabox
+	remove_action('admin_menu', 'genesis_add_inpost_seo_box');
+	
+	// Use Genesis Layout Metabox only on pages
+	remove_action('admin_menu', 'genesis_add_inpost_layout_box');
+	add_action('admin_menu', 'be_genesis_add_inpost_layout_box');
+	
 	// ** Frontend **		
 
 	// Exclude Form from login
@@ -368,7 +375,27 @@ function crm_remove_page_fields() {
 	remove_meta_box( 'tagsdiv-post_tag', 'post', 'normal' );
 }
 
+/**
+ * Use Genesis Layout Metabox only on pages
+ * Submitted patch to Genesis (#190) so this can be replaced with
+ * remove_post_type_support('post', 'genesis-layouts');
+ *
+ * @author Bill Erickson
+ * @props Thomas Griffin
+ */
+ 
+function be_genesis_add_inpost_layout_box() {
 
+	if ( !current_theme_supports('genesis-inpost-layouts') )
+		return;
+
+	foreach ( (array)get_post_types( array( 'public' => true ) ) as $type ) {
+		if ( post_type_supports( $type, 'genesis-layouts' ) || $type = 'page' ) {
+			add_meta_box('genesis_inpost_layout_box', __('Genesis Layout Settings', 'genesis'), 'genesis_inpost_layout_box', $type, 'normal', 'high');
+		}
+	}
+
+}
 
 // ** Frontend Functions ** //
 

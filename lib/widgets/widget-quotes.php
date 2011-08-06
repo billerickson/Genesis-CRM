@@ -48,11 +48,11 @@ class Outstanding_Quotes_Widget extends WP_Widget {
 			$count++;
 			endwhile;
 			
-			if($count < 1) echo "<p>WooHoo! You're either really fast at responding to prospects, or you haven't set up your categories yet. </p><p>This area shows posts that are 10 days or older and in the 'Prospect' category. If you haven't done so already, create a category with the slug 'prospect'.</p>";
+			if($count < 1) echo "<p>This displays any contacts with a status of Outstanding Quote.</p>";
 			
 			echo '</ol>';
 			else:
-				echo "<p>WooHoo! You're either really fast at responding to prospects, or you haven't set up your categories yet. </p><p>This area shows posts that are 10 days or older and in the 'Prospect' category. If you haven't done so already, create a category with the slug 'prospect'.</p>";
+				echo "<p>This displays any contacts with a status of Outstanding Quote.</p>";
 	
 			endif;
 			wp_reset_query();

@@ -22,7 +22,7 @@ function be_post_content() {
 	$sources = get_the_terms( $post->ID, 'sources', '', ', ', '' ); 
 	$list = ''; 
 	if ($sources) { foreach ($sources as $data) $list[] = $data->name; }
-	$sources = implode(', ', $list);
+	if (!empty($list)) $sources = implode(', ', $list);
 	$email = get_custom_field($prefix.'client_email');
 	$phone = get_custom_field($prefix.'client_phone');
 				

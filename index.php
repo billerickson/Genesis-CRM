@@ -126,7 +126,7 @@ function be_archive_title() {
 	if ( is_search() ) $title = 'Search Results for <em>'. get_query_var('s') . '</em>';
 	if ( is_category() ) $title = 'Category Results for <em>'. get_query_var('category_name') . '</em>';
 	
-	if ( $title ) {
+	if ( isset($title) ) {
 		printf( '<div class="taxonomy-description">%s</div>', $title );
 	}
 	

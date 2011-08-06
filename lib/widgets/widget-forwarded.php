@@ -24,12 +24,14 @@ class Forwarded_Widget extends WP_Widget {
 		echo $before_widget;
 		echo $before_title.'Reason for Forwarding Away'.$after_title;
 
-		echo '<ul>';
 		global $forwarded_away;
-		$forwarded_away_count = array_count_values($forwarded_away);
-		$forwarded_away_total = count($forwarded_away);
-		foreach ($forwarded_away_count as $key=>$value) echo '<li>'.$key.': '.crm_percent($value, $forwarded_away_total).'</li>';
-		echo '</ul>';
+		if (!empty($forwarded_away)) {
+			echo '<ul>';
+			$forwarded_away_count = array_count_values($forwarded_away);
+			$forwarded_away_total = count($forwarded_away);
+			foreach ($forwarded_away_count as $key=>$value) echo '<li>'.$key.': '.crm_percent($value, $forwarded_away_total).'</li>';
+			echo '</ul>';
+		}
 		
 		echo $after_widget;
 	}

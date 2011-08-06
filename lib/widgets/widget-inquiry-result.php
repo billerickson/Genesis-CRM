@@ -24,12 +24,14 @@ class Inquiry_Result_Widget extends WP_Widget {
 		echo $before_widget;
 		echo $before_title.'Result of Inquiry'.$after_title;
 
-		echo '<ul>';
 		global $project_result;
-		$project_result_count = array_count_values($project_result);
-		$total_project_result = count($project_result);
-		foreach ($project_result_count as $key=>$value) echo '<li>'.$key.': '.crm_percent($value, $total_project_result).'</li>';
-		echo '</ul>';
+		if (!empty($project_result)) {
+			echo '<ul>';
+			$project_result_count = array_count_values($project_result);
+			$total_project_result = count($project_result);
+			foreach ($project_result_count as $key=>$value) echo '<li>'.$key.': '.crm_percent($value, $total_project_result).'</li>';
+			echo '</ul>';
+		}
 		
 		echo $after_widget;
 	}

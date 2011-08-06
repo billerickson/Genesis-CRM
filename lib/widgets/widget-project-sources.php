@@ -24,12 +24,14 @@ class Project_Sources_Widget extends WP_Widget {
 		echo $before_widget;
 		echo $before_title.'Sources of Projects'.$after_title;
 
-		echo '<ul>';
 		global $projects;
-		$project_count = array_count_values($projects);
-		$total_projects = count($projects);
-		foreach ($project_count as $key=> $value) echo '<li>'.$key.': '.crm_percent($value, $total_projects).'</li>';
-		echo '</ul>';
+		if (!empty($projects)) {
+			echo '<ul>';
+			$project_count = array_count_values($projects);
+			$total_projects = count($projects);
+			foreach ($project_count as $key=> $value) echo '<li>'.$key.': '.crm_percent($value, $total_projects).'</li>';
+			echo '</ul>';
+		}
 		
 		echo $after_widget;
 	}

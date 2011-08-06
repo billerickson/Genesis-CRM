@@ -24,11 +24,13 @@ class Referral_Widget extends WP_Widget {
 		echo $before_widget;
 		echo $before_title.'Other Referrals'.$after_title;
 
-		echo '<ul>';
 		global $referrals;
-		$others = array_count_values($referrals);
-		foreach ($others as $key=>$value) if ($value > 1) echo '<li>'.$key.': '.$value.'</li>';
-		echo '</ul>';
+		if (!empty($referrals)) {
+			echo '<ul>';
+			$others = array_count_values($referrals);
+			foreach ($others as $key=>$value) if ($value > 1) echo '<li>'.$key.': '.$value.'</li>';
+			echo '</ul>';		
+		}
 		
 		echo $after_widget;
 	}

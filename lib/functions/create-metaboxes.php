@@ -9,7 +9,7 @@
  *
  */
 
-function be_create_metaboxes() {
+function be_create_metaboxes( $meta_boxes ) {
 	global $prefix;
 	$prefix = '_crm_';
 	$meta_boxes = array();
@@ -185,7 +185,12 @@ function be_create_metaboxes() {
 	);
 
  	
- 	require_once(CHILD_DIR . '/lib/metabox/init.php'); 
+	return $meta_boxes;
 }
 
+function be_initialize_cmb_meta_boxes() {
+    if ( !class_exists( 'cmb_Meta_Box' ) ) {
+        require_once( CHILD_DIR . '/lib/metabox/init.php' );
+    }
+}
 ?>

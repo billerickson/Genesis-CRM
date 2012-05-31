@@ -2,7 +2,7 @@
 /**
  * Functions
  *
- * @package      genesis-crm
+ * @package      Genesis CRM
  * @author       Bill Erickson <bill@billerickson.net>
  * @copyright    Copyright (c) 2011, Bill Erickson
  * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
@@ -36,8 +36,7 @@ function child_theme_setup() {
 	add_action( 'save_post', 'mfields_set_default_object_terms', 100, 2 );
 
 	// Set up Meta Boxes
-	add_filter( 'cmb_meta_boxes' , 'be_create_metaboxes' );
-	add_action( 'init', 'be_initialize_cmb_meta_boxes', 9999 );
+	add_action( 'init' , 'be_create_metaboxes' );
 
 	// Setup Sidebars
 	genesis_register_sidebar(array('name' => 'Home Column 1', 'id' => 'home-column-1'));
@@ -409,6 +408,7 @@ function be_genesis_add_inpost_layout_box() {
  
 function crm_form_exclusion($exclusion) {
 	$exclusion[] = 'form';
+	$exclusion[] = 'contact-form';
 	return $exclusion;
 }
 

@@ -2,7 +2,7 @@
 /**
  * Customize Post Content
  *
- * @package      genesis-crm
+ * @package      Genesis CRM
  * @author       Bill Erickson <bill@billerickson.net>
  * @copyright    Copyright (c) 2011, Bill Erickson
  * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License

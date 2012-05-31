@@ -1481,6 +1481,7 @@ div.gform_wrapper .gform_footer {
 #content .project {width: 280px; float: left; padding: 10px 5px; margin: 0 0 20px 20px;}
 #content .project.first, #content .item .project {clear:both; margin-left: 0;}
 #content .project.yes {background: #fffeb5;}
+#content .project.delayed {background: #fff;}
 #content .project h3 {margin-bottom: 0;}
 #content .project p {margin-bottom: 10px;}
 #content .project a {color: #06c; text-decoration: none;}
@@ -1489,6 +1490,72 @@ div.gform_wrapper .gform_footer {
 
 #content .grey {background: #eee; padding: 10px;}
 #content .grey .project {margin-bottom: 0;}
+#content .grey .project.yes { border-right: 5px solid #ddd; background: #ddd;}
+
+/* New Form
+------------------------------------------------------------ */
+
+body.page-template-template-new-form-php {
+	background: #f4f4f4;
+}
+
+.page-template-template-new-form-php #wrap,
+.page-template-template-new-form-php #inner,
+.page-template-template-new-form-php #content-sidebar-wrap,
+.page-template-template-new-form-php #content {
+	background: transparent;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.page-template-template-new-form-php #content .gfield_label {
+	width: 160px;
+	text-align: right;
+	padding-right: 25px;
+	color: #4f5357;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	text-shadow: 1px 1px 1px #fff;
+	font-size: 15px;
+	font-weight: normal;
+}
+
+.page-template-template-new-form-php .ginput_container {
+	display: inline-block;
+	width: 40%;
+}
+
+.page-template-template-new-form-php .ginput_container .large,
+.page-template-template-new-form-php .ginput_container .textarea {
+	background: #fff;
+	border: none;
+	border-top: 1px solid #ababab;
+	border-left: 1px solid #ababab;
+}
+
+.page-template-template-new-form-php #field_1_4 .ginput_container {
+	width: 60%;
+}
+
+.page-template-template-new-form-php .post-edit-link,
+.page-template-template-new-form-php .validation_error,
+.page-template-template-new-form-php #content .validation_message { display: none; }
+
+.page-template-template-new-form-php #content .gform_footer { margin-left: 185px;}
+
+.page-template-template-new-form-php #content .gfield_error {
+	background: transparent !important;
+	border: none !important;
+	margin: 0 !important;
+}
+
+.page-template-template-new-form-php #content .gfield_error label {
+	color: #be0d0d;
+}
+
+.page-template-template-new-form-php #content .gfield_error .large {
+	border: 1px solid #be0d0d;
+}
 
 /* Smaller Screens
 ------------------------------------------------------------ */

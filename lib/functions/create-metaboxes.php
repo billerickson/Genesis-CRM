@@ -2,17 +2,16 @@
 /**
  * Create Metaboxes
  *
- * @package      genesis-crm
+ * @package      Genesis CRM
  * @author       Bill Erickson <bill@billerickson.net>
  * @copyright    Copyright (c) 2011, Bill Erickson
  * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
  *
  */
 
-function be_create_metaboxes() {
+function be_create_metaboxes( $meta_boxes ) {
 	global $prefix;
 	$prefix = '_crm_';
-	$meta_boxes = array();
 
 	$meta_boxes[] = array(
     	'id' => 'client_information',
@@ -77,6 +76,15 @@ function be_create_metaboxes() {
 	        	)
 	        ),
 	        array(
+	        	'name' => 'Project Type',
+	        	'id' => $prefix . 'project_type',
+	        	'type' => 'select',
+	        	'options' => array(
+	        		array( 'name' => 'Custom Theme', 'value' => 'Custom Theme'),
+	        		array( 'name' => 'Theme Modification', 'value' => 'Theme Modification' ),
+	        	)
+	        ),
+	        array(
 	            'name' => 'Project Status',
 	            'id' => $prefix.'project_status',
 	            'type' => 'radio_inline',
@@ -94,7 +102,8 @@ function be_create_metaboxes() {
 	        	'type' => 'radio_inline',
 	        	'options' => array(
 	        		array('name' => 'Yes', 'value' => 'yes'),
-	        		array('name' => 'No', 'value' => 'no')
+	        		array('name' => 'No', 'value' => 'no'),
+	        		array( 'name' => 'Delayed', 'value' => 'delayed' ),
    		     	)
 	        ),
 	        array(
@@ -112,36 +121,6 @@ function be_create_metaboxes() {
 	        	'id' => $prefix.'expense',
 	        	'type' => 'text_money',
 	        ),
-			array(
-				'name' => 'Time Spent',
-				'id' => $prefix.'label_time',
-				'type' => 'title'	
-			),
-			array(
-				'name' => 'Initial Setup',
-				'id' => $prefix.'time_setup',
-				'type' => 'text_small'
-			),
-			array(
-				'name' => 'Development',
-				'id' => $prefix.'time_development',
-				'type' => 'text_small'
-			),
-			array(
-				'name' => 'Phone',
-				'id' => $prefix.'time_phone',
-				'type' => 'text_small'
-			),
-			array(
-				'name' => 'Hourly',
-				'id' => $prefix.'time_hourly',
-				'type' => 'text_small'
-			),
-			array(
-				'name' => 'Other',
-				'id' => $prefix.'time_other',
-				'type' => 'text_small'
-			)
  	   )
 	);
 
@@ -183,9 +162,36 @@ function be_create_metaboxes() {
 		'show_names' => false, // Show field names left of input
 	    'fields' => array()
 	);
+	
+	$meta_boxes[] = array(
+		'id' => 'server-information',
+		'title' => 'Server Information',
+		'pages' => array('post'),
+		'context' => 'normal',
+		'priority' => 'low',
+		'show_names' => false,
+		'fields' => array(
+			array(
+				'name' => 'Server Information',
+				'desc' => '',
+				'id' => $prefix . 'server_information',
+				'type' => 'textarea'
+			)
+		)
+	);
 
  	
- 	require_once(CHILD_DIR . '/lib/metabox/init.php'); 
+ 	return $meta_boxes;
 }
+add_filter( 'cmb_meta_boxes', 'be_create_metaboxes' );
 
-?>
+/**
+ * Initialize Metabox Script 
+ *
+ */
+function be_initialize_cmb_meta_boxes() {
+	if ( !class_exists( 'cmb_Meta_Box' ) ) {
+		require_once( CHILD_DIR . '/lib/metabox/init.php' );
+	}
+}
+add_action( 'init', 'be_initialize_cmb_meta_boxes', 9999 );

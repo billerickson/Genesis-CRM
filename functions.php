@@ -83,11 +83,10 @@ function child_theme_setup() {
 	add_action( 'admin_menu' , 'crm_remove_page_fields' );
 	
 	// Remove Genesis SEO Metabox
-	remove_action('admin_menu', 'genesis_add_inpost_seo_box');
+	remove_post_type_support( 'post', 'genesis-seo' );
 	
-	// Use Genesis Layout Metabox only on pages
-	remove_action('admin_menu', 'genesis_add_inpost_layout_box');
-	add_action('admin_menu', 'be_genesis_add_inpost_layout_box');
+	// Remove Genesis Layout Options
+	remove_post_type_support( 'post', 'genesis-layouts' );
 	
 	// ** Frontend **		
 
